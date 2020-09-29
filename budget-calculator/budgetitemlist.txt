@@ -1,0 +1,74 @@
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EditItemModelComponent } from '../edit-item-model/edit-item-model.component';
+import { AddItemFormComponent } from './../add-item-form/add-item-form.component' 
+import { BudgetHttpService} from './../budget-http.service'
+
+@Component({
+  selector: 'app-budget-item-list',
+  templateUrl: './budget-item-list.component.html',
+  styleUrls: ['./budget-item-list.component.css']
+})
+
+export class BudgetItemListComponent implements OnInit {
+
+  public budgetTrial: any
+  @Input() budgetItemArray: any = [];
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() update: EventEmitter<UpdateEvent> = new EventEmitter<UpdateEvent>();
+  
+  
+  constructor(public budgetHttpService: BudgetHttpService,public dialog: MatDialog) { }
+
+  ngOnInit() {
+    this.budgetHttpService.getAllBudget().subscribe(
+      data => {
+        console.log(data);
+        this.budgetTrial=data.data
+        if(this.budgetTrial)
+        {
+          for(let budget of this.budgetTrial)
+          {
+          this.budgetItemArray.push(budget)
+          }
+        }
+      },
+      error => {
+        console.log("some error occurred")
+        console.log(error.errorMessage)
+      }
+    )
+  }
+
+  deleteBudget(item: any):any {
+    this.delete.emit(item); 
+  }
+
+  onCardClick(item: any) {
+    //show the edit model
+    const dialogref= this.dialog.open(EditItemModelComponent, {
+      width: '580px',
+      data: item
+    })
+
+    dialogref.afterClosed().subscribe(result => {
+      console.log("inside dialog box closed")
+      console.log(result) 
+      if(result) {
+        //replace the item with the updated/aubmitted item from the form
+        this.update.emit({
+          old: item,
+          new: result
+        });
+      }
+    })
+  }
+
+}
+
+
+export interface UpdateEvent {
+  old : any;
+  new : any;   
+ }

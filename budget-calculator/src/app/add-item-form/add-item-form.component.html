@@ -1,0 +1,29 @@
+<form class="form-inline" #itemForm="ngForm" (ngSubmit)="addBudget(itemForm); ">
+  <select [(ngModel)]="budgetTransaction" #category="ngModel" name="budgetTransaction"
+    class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelectPref"
+    style=" height:36px; width: 125px; align-content: center; background-color: lightgrey; border-color: transparent;"
+    required>
+    <option [ngValue]="undefined" disabled hidden>Transaction</option>
+    <option *ngFor="let transaction of possibleTransaction" [value]="transaction" style="background-color: white;">
+      {{transaction}}</option>
+  </select>
+
+  <label class="sr-only" for="inlineFormInputName2">Amount</label>
+  <input type="number" min="0" name="budgetAmount" [(ngModel)]="budgetAmount" #amount="ngModel"
+    style="width: 100px; background-color: lightgrey; border-color: transparent;" class="form-control mb-2 mr-sm-2"
+    id="inlineFormInputName2" placeholder="Amount" required>
+
+  <label class="sr-only" for="inlineFormInputGroupUsername2">Expense</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input type="text" name="budgetExpense" [(ngModel)]="budgetExpense" #expense="ngModel"
+      style="width: 350px; background-color: lightgrey; border-color: transparent;" class="form-control"
+      id="inlineFormInputGroupUsername2" placeholder="Expense" required>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2" [disabled]="!itemForm.form.valid" *ngIf="isNewItem">
+    Add
+  </button>
+  <button type="submit" class="btn btn-success mb-2" [disabled]="!itemForm.form.valid" *ngIf="!isNewItem">
+    Save
+  </button>
+
+</form>

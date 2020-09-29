@@ -1,0 +1,61 @@
+.budget-items-section{
+    display: flex;
+    padding: 50px;
+
+    /*horizontally and vertically center flex children*/
+    justify-content: center;
+    align-items: center;
+}
+
+.budget-items-container {
+    display: flex;
+    max-width: 680px;
+    height: 100%;
+    width: 100%;
+}
+
+.credit-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0; /* for column to be of same size, regardless of content */
+    flex-grow : 1;
+
+    margin-right: 35px;
+
+}
+.debit-column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0; /* for column to be of same size, regardless of content */
+    flex-grow : 1;
+}
+
+.credit-column h1 {
+    font-family: "Lato";
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    color: #0cc785;
+}
+
+.debit-column h1 {
+    font-family: "Lato";
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    color: #d84916;
+}
+
+.credit-column .budget-items{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.debit-column .budget-items{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}

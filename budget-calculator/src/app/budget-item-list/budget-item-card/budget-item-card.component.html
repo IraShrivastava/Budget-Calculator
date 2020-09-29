@@ -1,0 +1,12 @@
+<div class="root">
+    <div class="budget-item" (click)="onCardClick()" [ngClass]="{ 'credit' : items.transaction === 'Credit', 'debit' : items.transaction === 'Debit'}">
+        <div class="description">
+            <p>{{items.expense}}</p>
+        </div>
+        <div class="amount">
+            <p>{{items.amount}}</p>
+        </div>
+    </div>
+
+    <div class="x-icon-button" (click)="deleteBudget()" ></div> 
+</div>
