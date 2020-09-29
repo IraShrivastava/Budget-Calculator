@@ -33,3 +33,14 @@ This was generated using `npm init`, a simple backend created for budget calcula
 ## Execution
 
 To execute backend first run `mongod` and then `node index.js`
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/29854204/94566277-c9896f80-0287-11eb-9102-9c49fae614cd.png)
+
+![image](https://user-images.githubusercontent.com/29854204/94568418-140beb80-028a-11eb-89de-bda92e5c4a7d.png)
+
+![image](https://user-images.githubusercontent.com/29854204/94568488-284fe880-028a-11eb-8895-000e669a43c8.png)
+
+![image](https://user-images.githubusercontent.com/29854204/94568569-4c132e80-028a-11eb-96a9-eaa603cd41f9.png)
+
